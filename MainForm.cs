@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Dex
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             Globals.form = this;
@@ -62,6 +62,69 @@ namespace Dex
             if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
                 Save(sender, e);
 
+            // undo code
+            else if (e.KeyCode == Keys.Z && e.Modifiers == Keys.Control)
+                CodeBox.Undo();
+
+            // redo code
+            else if (e.KeyCode == Keys.Y && e.Modifiers == Keys.Control)
+                CodeBox.Redo();
+
+            // duplicate line
+            else if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)
+            {
+                string data = CodeBox.Text;
+                int selectionStart = CodeBox.SelectionStart;
+
+                int leftBound = -1, rightBound = -1;
+                for (leftBound = CodeBox.SelectionStart; leftBound != 0 && data[leftBound - 1] != '\n'; leftBound--) ;
+                for (rightBound = CodeBox.SelectionStart; rightBound != CodeBox.Text.Length && data[rightBound] != '\n' && data[rightBound] != '\0'; rightBound++) ;
+
+                // duplicate slides
+                CodeBox.Text = data.Substring(0, rightBound) + "\n" + data.Substring(leftBound, rightBound - leftBound) + data.Substring(rightBound);
+
+                // move back to the previous selection
+                CodeBox.SelectionStart = selectionStart;
+            }
+
+            // copy selected line
+            else if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
+            {
+                string data = CodeBox.Text;
+                int selectionStart = CodeBox.SelectionStart;
+
+                int leftBound = -1, rightBound = -1;
+                for (leftBound = CodeBox.SelectionStart; leftBound != 0 && data[leftBound - 1] != '\n'; leftBound--) ;
+                for (rightBound = CodeBox.SelectionStart; rightBound != CodeBox.Text.Length && data[rightBound] != '\n' && data[rightBound] != '\0'; rightBound++) ;
+
+                // copy selected line into clipboard
+                if (leftBound != rightBound)
+                    System.Windows.Forms.Clipboard.SetText(data.Substring(leftBound, rightBound - leftBound));
+            }
+
+            // cut selected line
+            else if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                string data = CodeBox.Text;
+                int selectionStart = CodeBox.SelectionStart;
+
+                int leftBound = -1, rightBound = -1;
+                for (leftBound = CodeBox.SelectionStart; leftBound != 0 && data[leftBound - 1] != '\n'; leftBound--) ;
+                for (rightBound = CodeBox.SelectionStart; rightBound != CodeBox.Text.Length && data[rightBound] != '\n' && data[rightBound] != '\0'; rightBound++) ;
+
+                // copy selected line into clipboard
+                if (leftBound != rightBound)
+                    System.Windows.Forms.Clipboard.SetText(data.Substring(leftBound, rightBound - leftBound));
+
+                // cut selected line
+                int updatedLb = leftBound - 1;
+                if (leftBound == 0) updatedLb = leftBound;
+                CodeBox.Text = data.Substring(0, updatedLb) + data.Substring(rightBound);
+
+                // move back to the previous selection
+                CodeBox.SelectionStart = leftBound;
+            }
+
             // open/close side panel
             else if (e.KeyCode == Keys.Q && e.Modifiers == Keys.Control)
             {
@@ -103,15 +166,14 @@ namespace Dex
             String keyChar = e.KeyChar.ToString();
 
             if (
-                Globals.openParanthesis.Count > 0 && (
-                e.KeyChar == ')' && Globals.openParanthesis.Last() == "("
-                || e.KeyChar == ']' && Globals.openParanthesis.Last() == "["
-                || e.KeyChar == '}' && Globals.openParanthesis.Last() == "{"
-                || e.KeyChar == '"' && Globals.openParanthesis.Last() == "\""
-                || e.KeyChar == '\'' && Globals.openParanthesis.Last() == "'"))
+                (Globals.openParanthesis.Count > 0) && (CodeBox.Text.Length >= CodeBox.SelectionStart + 1) && (
+                e.KeyChar == ')' && Globals.openParanthesis.Last() == "(" && CodeBox.Text[CodeBox.SelectionStart] == ')'
+                || e.KeyChar == ']' && Globals.openParanthesis.Last() == "[" && CodeBox.Text[CodeBox.SelectionStart] == ']'
+                || e.KeyChar == '}' && Globals.openParanthesis.Last() == "{" && CodeBox.Text[CodeBox.SelectionStart] == '}'
+                || e.KeyChar == '"' && Globals.openParanthesis.Last() == "\"" && CodeBox.Text[CodeBox.SelectionStart] == '"'
+                || e.KeyChar == '\'' && Globals.openParanthesis.Last() == "'" && CodeBox.Text[CodeBox.SelectionStart] == '\''))
             {
                 e.Handled = true;
-                Console.WriteLine("Handled");
                 CodeBox.SelectionStart = CodeBox.SelectionStart + 1;
                 Globals.openParanthesis.Remove(Globals.openParanthesis.Last());
             }
@@ -186,30 +248,22 @@ namespace Dex
         private void JavaButton_Click(object sender, EventArgs e)
         {
             if (Globals.OpenedFile != null)
-            {
                 TerminalService.OpenProcessInNewTerminal("javac.exe", "--version " + Globals.OpenedFile);
-            }
             else
-            {
-                MessageBox.Show("Save your current file or open a an existing one before building it.");
-            }
+                MessageBox.Show("Save your current file or open an existing one before building it.", "Dex Editor");
         }
 
         private void javaClassFileclassToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Globals.OpenedFile != null)
-            {
                 TerminalService.OpenProcessInNewTerminal("java.exe", "-showversion -cp " + FileManagerService.GetFilePath(Globals.OpenedFile) + " " + FileManagerService.GetFileNameNoExtension(Globals.OpenedFile));
-            }
             else
-            {
-                MessageBox.Show("Save your current file or open a an existing one before building it.");
-            }
+                MessageBox.Show("Save your current file or open an existing one before building it.", "Dex Editor");
         }
 
         private void toolStripSplitButton2_ButtonClick(object sender, EventArgs e)
         {
-            MessageBox.Show("Select a building tool");
+            MessageBox.Show("Select one of the options from the dropdown.", "Dex Editor");
         }
 
         private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
@@ -221,6 +275,34 @@ namespace Dex
             }
             else
                 TerminalService.OpenDefaultTerminal();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.StartPosition = FormStartPosition.CenterParent;
+            aboutForm.ShowDialog();
+        }
+
+        private void pythonScriptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Globals.OpenedFile != null)
+                TerminalService.OpenProcessInNewTerminal("python", Globals.OpenedFile);
+            else
+                MessageBox.Show("Save your current file or open an existing one before building it.", "Dex Editor");
+        }
+
+        private void perlScriptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Globals.OpenedFile != null)
+                TerminalService.OpenProcessInNewTerminal("perl", Globals.OpenedFile);
+            else
+                MessageBox.Show("Save your current file or open an existing one before building it.", "Dex Editor");
+        }
+
+        private void toolStripSplitButton3_ButtonClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Select one of the options from the dropdown.", "Dex Editor");
         }
     }
 
