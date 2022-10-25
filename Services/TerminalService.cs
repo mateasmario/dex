@@ -11,44 +11,44 @@ namespace Dex.Services
     {
         public static void OpenProcessInNewTerminal(string process, string args)
         {
-            Panel panel1 = (Panel)Globals.form.Controls["panel1"];
+            Panel Terminalpanel = (Panel)Globals.form.Controls["Terminalpanel"];
 
-            panel1.Controls.Remove(Globals.Terminal);
+            Terminalpanel.Controls.Remove(Globals.Terminal);
             TerminalService.NewTerminal();
 
             Globals.Terminal.StartProcess(process, args);
             Globals.terminalStarted = true;
 
-            panel1.Show();
+            Terminalpanel.Show();
             Globals.terminalOpened = true;
             Globals.Terminal.Focus();
         }
 
         public static void OpenDefaultTerminal()
         {
-            Panel panel1 = (Panel)Globals.form.Controls["panel1"];
+            Panel Terminalpanel = (Panel)Globals.form.Controls["Terminalpanel"];
 
             if (Globals.terminalStarted == false)
             {
-                panel1.Controls.Remove(Globals.Terminal);
+                Terminalpanel.Controls.Remove(Globals.Terminal);
                 TerminalService.NewTerminal();
 
                 Globals.Terminal.StartProcess(Globals.ChosenProcess, "");
                 Globals.terminalStarted = true;
             }
 
-            panel1.Show();
+            Terminalpanel.Show();
             Globals.terminalOpened = true;
             Globals.Terminal.Focus();
         }
 
         public static void NewTerminal()
         {
-            Panel panel1 = (Panel)Globals.form.Controls["panel1"];
+            Panel Terminalpanel = (Panel)Globals.form.Controls["Terminalpanel"];
 
             ConsoleControl.ConsoleControl Terminal = new ConsoleControl.ConsoleControl();
             Globals.Terminal = Terminal;
-            Terminal.Parent = panel1;
+            Terminal.Parent = Terminalpanel;
             Terminal.Dock = DockStyle.Fill;
             Terminal.IsInputEnabled = true;
             Terminal.InternalRichTextBox.BorderStyle = BorderStyle.None;

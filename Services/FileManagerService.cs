@@ -7,42 +7,38 @@ namespace Dex.Services
 {
     internal class FileManagerService
     {
-        public static void selectFile(String fileName)
+        public static void selectFile(String fileName, TreeView Filelist)
         {
-            TreeView Sidepanel = (TreeView)Globals.form.Controls["Sidepanel"];
-
             Globals.OpenedFile = fileName;
             Globals.form.Text = Globals.OpenedFile + " (Dex Editor)";
 
-            UpdateFileInfo();
+            UpdateFileInfo(Filelist);
         }
 
-        public static void UpdateFileInfo()
+        public static void UpdateFileInfo(TreeView Filelist)
         {
-            TreeView Sidepanel = (TreeView)Globals.form.Controls["Sidepanel"];
-
             FileInfo fi = new FileInfo(Globals.OpenedFile);
 
-            Sidepanel.Nodes[0].Text = "Name: " + fi.Name;
+            Filelist.Nodes[0].Text = "Name: " + fi.Name;
 
             TreeNode tn;
 
-            if (Sidepanel.Nodes.Count == 1)
+            if (Filelist.Nodes.Count == 1)
             {
                 for (int i = 0; i < 7; i++)
                 {
                     tn = new TreeNode("");
-                    Sidepanel.Nodes.Add(tn);
+                    Filelist.Nodes.Add(tn);
                 }
             }
 
-            Sidepanel.Nodes[1].Text = "Extension: " + fi.Extension;
-            Sidepanel.Nodes[2].Text = "Attributes: " + fi.Attributes;
-            Sidepanel.Nodes[3].Text = "Length: " + fi.Length + " bytes";
-            Sidepanel.Nodes[4].Text = "Directory: " + fi.Directory;
-            Sidepanel.Nodes[5].Text = "Read-Only: " + fi.IsReadOnly;
-            Sidepanel.Nodes[6].Text = "Last Access: " + fi.LastAccessTime;
-            Sidepanel.Nodes[7].Text = "Last Write: " + fi.LastWriteTime;
+            Filelist.Nodes[1].Text = "Extension: " + fi.Extension;
+            Filelist.Nodes[2].Text = "Attributes: " + fi.Attributes;
+            Filelist.Nodes[3].Text = "Length: " + fi.Length + " bytes";
+            Filelist.Nodes[4].Text = "Directory: " + fi.Directory;
+            Filelist.Nodes[5].Text = "Read-Only: " + fi.IsReadOnly;
+            Filelist.Nodes[6].Text = "Last Access: " + fi.LastAccessTime;
+            Filelist.Nodes[7].Text = "Last Write: " + fi.LastWriteTime;
         }
 
         public static string GetFileNameNoExtension(string fileName)
@@ -76,47 +72,43 @@ namespace Dex.Services
             return result;
         }
 
-        public static void NewFile() {
+        public static void NewFile(TreeView Filelist) {
             RichTextBox CodeBox = (RichTextBox)Globals.form.Controls["CodeBox"];
-            TreeView Sidepanel = (TreeView)Globals.form.Controls["Sidepanel"];
             
-            int count = Sidepanel.Nodes.Count;
+            int count = Filelist.Nodes.Count;
 
             for (int i = 0; i<count; i++)
-                Sidepanel.Nodes.RemoveAt(0);
+                Filelist.Nodes.RemoveAt(0);
 
             Globals.OpenedFile = null;
 
             TreeNode node = new TreeNode();
             node.Text = "No file opened";
-            Sidepanel.Nodes.Add(node);
+            Filelist.Nodes.Add(node);
 
             Globals.form.Text = "Dex Editor";
             CodeBox.Text = "";
         }
 
-        public static void open()
+        public static void open(TreeView Filelist)
         {
             RichTextBox codeBox = (RichTextBox)Globals.form.Controls["CodeBox"];
-            TreeView Sidepanel = (TreeView)Globals.form.Controls["Sidepanel"];
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string data = File.ReadAllText(openFileDialog.FileName);
                 codeBox.Text = data;
-                selectFile(openFileDialog.FileName);
+                selectFile(openFileDialog.FileName, Filelist);
             }
         }
-        public static void save(string fileName, string text)
+        public static void save(string fileName, string text, TreeView Filelist)
         {
-            TreeView Sidepanel = (TreeView)Globals.form.Controls["Sidepanel"];
-
             File.WriteAllText(fileName, text);
-            UpdateFileInfo();
+            UpdateFileInfo(Filelist);
         }
 
-        public static void saveAs(string text, TreeView Sidepanel)
+        public static void saveAs(string text, TreeView Filelist)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Title = "Save as";
@@ -133,7 +125,7 @@ namespace Dex.Services
                 fs.Write(data, 0, data.Length);
                 fs.Close();
 
-                selectFile(saveFileDialog1.FileName);
+                selectFile(saveFileDialog1.FileName, Filelist);
             }
         }
 

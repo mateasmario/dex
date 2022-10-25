@@ -138,6 +138,11 @@
     <None Include="Resources\powershell.png" />
     <None Include="Resources\linux.png" />
     <None Include="Resources\c-.png" />
+    <None Include="Resources\sticky-notes.png" />
+    <None Include="Resources\color-circle.png" />
+    <None Include="Resources\close %281%29.png" />
+    <None Include="Resources\find.png" />
+    <None Include="Resources\search.png" />
     <Content Include="Untitled-2 %282%29.ico" />
     <Content Include="Untitled-2 %283%29.ico" />
   </ItemGroup>

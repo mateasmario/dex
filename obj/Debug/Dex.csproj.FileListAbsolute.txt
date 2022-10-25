@@ -7,11 +7,11 @@ E:\dev\winforms\Dex\bin\Debug\ConsoleControl.xml
 E:\dev\winforms\Dex\bin\Debug\ConsoleControlAPI.xml
 E:\dev\winforms\Dex\obj\Debug\Dex.csproj.AssemblyReference.cache
 E:\dev\winforms\Dex\obj\Debug\Dex.csproj.SuggestedBindingRedirects.cache
+E:\dev\winforms\Dex\obj\Debug\Dex.AboutForm.resources
+E:\dev\winforms\Dex\obj\Debug\Dex.MainForm.resources
 E:\dev\winforms\Dex\obj\Debug\Dex.Properties.Resources.resources
 E:\dev\winforms\Dex\obj\Debug\Dex.csproj.GenerateResource.cache
 E:\dev\winforms\Dex\obj\Debug\Dex.csproj.CoreCompileInputs.cache
 E:\dev\winforms\Dex\obj\Debug\Dex.csproj.CopyComplete
 E:\dev\winforms\Dex\obj\Debug\Dex.exe
 E:\dev\winforms\Dex\obj\Debug\Dex.pdb
-E:\dev\winforms\Dex\obj\Debug\Dex.MainForm.resources
-E:\dev\winforms\Dex\obj\Debug\Dex.AboutForm.resources

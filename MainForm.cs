@@ -15,13 +15,18 @@ namespace Dex
         {
             InitializeComponent();
             Globals.form = this;
-            Globals.sidePanelOpened = false;
-            Sidepanel.Hide();
+            Globals.filePanelOpened = false;
             Globals.themePanelOpened = false;
-            Themepanel.Hide();
             Globals.terminalOpened = false;
-            panel1.Hide();
             Globals.terminalStarted = false;
+            Globals.findReplaceOpened = false;
+
+            Globals.searched = false;
+
+            Themepanel.Hide();
+            Filepanel.Hide();
+            Terminalpanel.Hide();
+            FindReplacePanel.Hide();
         }
 
         public void DesignFix()
@@ -46,14 +51,14 @@ namespace Dex
         private void Save(object sender, EventArgs e)
         {
             if (Globals.OpenedFile != null)
-                FileManagerService.save(Globals.OpenedFile, CodeBox.Text);
+                FileManagerService.save(Globals.OpenedFile, CodeBox.Text, Filelist);
             else
-                FileManagerService.saveAs(CodeBox.Text, Sidepanel);
+                FileManagerService.saveAs(CodeBox.Text, Filelist);
         }
 
         private void SaveAs(object sender, EventArgs e)
         {
-            FileManagerService.saveAs(CodeBox.Text, Sidepanel);
+            FileManagerService.saveAs(CodeBox.Text, Filelist);
         }
 
         private void Global_KeyDown(object sender, KeyEventArgs e)
@@ -125,18 +130,18 @@ namespace Dex
                 CodeBox.SelectionStart = leftBound;
             }
 
-            // open/close side panel
+            // open/close file panel
             else if (e.KeyCode == Keys.Q && e.Modifiers == Keys.Control)
             {
-                if (Globals.sidePanelOpened == true)
+                if (Globals.filePanelOpened == true)
                 {
-                    Sidepanel.Hide();
-                    Globals.sidePanelOpened = false;
+                    Filepanel.Hide();
+                    Globals.filePanelOpened = false;
                 }
                 else
                 {
-                    Sidepanel.Show();
-                    Globals.sidePanelOpened = true;
+                    Filepanel.Show();
+                    Globals.filePanelOpened = true;
                 }
             }
 
@@ -154,11 +159,45 @@ namespace Dex
                     Globals.themePanelOpened = true;
                 }
             }
+
+            // open/close find/replace panel
+            else if (e.KeyCode == Keys.F && e.Modifiers == Keys.Control)
+            {
+                if (Globals.findReplaceOpened == true)
+                {
+                    FindReplacePanel.Hide();
+                    Globals.findReplaceOpened = false;
+                    CodeBox.Focus();
+                    Globals.searched = false;
+                }
+                else
+                {
+                    FindReplacePanel.Show();
+                    Globals.findReplaceOpened = true;
+                    FindTextBox.Focus();
+                }
+            }
+
+            // find/replace if textbox selected
+            else if (sender is TextBox && e.KeyCode == Keys.Enter)
+            {
+                FindInCodeBox();
+            }
+
+            // find further
+            else if (sender is RichTextBox && e.KeyCode == Keys.Enter)
+            {
+                if (Globals.searched)
+                {
+                    e.Handled = true;
+                    FindInCodeBox();
+                }
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileManagerService.open();
+            FileManagerService.open(Filelist);
         }
 
         private void CodeBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -207,7 +246,8 @@ namespace Dex
 
         private void Themelist_DoubleClick(object sender, EventArgs e)
         {
-            ThemeService.ChangeTheme(Themelist, Themelabel, Globals.Terminal);
+            if (Themelist.SelectedItems.Count == 1)
+                ThemeService.ChangeTheme(Themelist, Themelabel, Globals.Terminal, Filelist);
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -222,7 +262,7 @@ namespace Dex
 
         private void newFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileManagerService.NewFile();
+            FileManagerService.NewFile(Filelist);
         }
 
         private void TerminalButton_Click(object sender, EventArgs e)
@@ -270,7 +310,7 @@ namespace Dex
         {
             if (Globals.terminalOpened == true)
             {
-                panel1.Hide();
+                Terminalpanel.Hide();
                 Globals.terminalOpened = false;
             }
             else
@@ -303,6 +343,49 @@ namespace Dex
         private void toolStripSplitButton3_ButtonClick(object sender, EventArgs e)
         {
             MessageBox.Show("Select one of the options from the dropdown.", "Dex Editor");
+        }
+
+        private void dToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Globals.findReplaceOpened = true;
+            FindReplacePanel.Show();
+            FindTextBox.Focus();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Globals.findReplaceOpened = false;
+            FindReplacePanel.Hide();
+            CodeBox.Focus();
+            Globals.searched = false;
+        }
+
+        public void FindInCodeBox()
+        {
+            if (ReplaceTextBox.Text == "")
+            {
+                string data = FindTextBox.Text;
+                int location = CodeBox.Find(data, CodeBox.SelectionStart + CodeBox.SelectionLength, RichTextBoxFinds.None);
+
+                if (location >= 0)
+                {
+                    CodeBox.Focus();
+                    CodeBox.SelectionStart = location;
+                    CodeBox.SelectionLength = data.Length;
+                }
+
+                Globals.searched = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FindInCodeBox();
+        }
+
+        private void CodeBox_SelectionChanged(object sender, EventArgs e)
+        {
+            Globals.searched = false;
         }
     }
 

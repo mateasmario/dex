@@ -10,10 +10,10 @@ namespace Dex.Services
 {
     internal class ThemeService
     {
-        public static void ChangeTheme(ListView Themelist, Label Themelabel, ConsoleControl.ConsoleControl terminal)
+        public static void ChangeTheme(ListView Themelist, Label Themelabel, ConsoleControl.ConsoleControl terminal, TreeView Filelist)
         {
             //ListView Themelist = (ListView)Globals.form.Controls["Themelist"];
-            TreeView Sidepanel = (TreeView)Globals.form.Controls["Sidepanel"];
+            Panel Filepanel = (Panel)Globals.form.Controls["Filepanel"];
             RichTextBox CodeBox = (RichTextBox)Globals.form.Controls["CodeBox"];
             MenuStrip menuStrip1 = (MenuStrip)Globals.form.Controls["menuStrip1"];
             StatusStrip statusStrip1 = (StatusStrip)Globals.form.Controls["statusStrip1"];
@@ -76,8 +76,10 @@ namespace Dex.Services
                     break;
             }
 
-            Sidepanel.BackColor = Globals.baseBackColor;
-            Sidepanel.ForeColor = Globals.baseForeColor;
+            Filepanel.BackColor = Globals.baseBackColor;
+            Filepanel.ForeColor = Globals.baseForeColor;
+            Filelist.BackColor = Globals.baseBackColor;
+            Filelist.ForeColor = Globals.baseForeColor;
             Themelist.BackColor = Globals.baseBackColor;
             Themelist.ForeColor = Globals.baseForeColor;
             Themepanel.BackColor = Globals.baseBackColor;

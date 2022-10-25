@@ -23,10 +23,11 @@ namespace Dex
         public static ConsoleControl.ConsoleControl Terminal { get; set; }
 
         // design details
-        public static bool sidePanelOpened { get; set; }
+        public static bool filePanelOpened { get; set; }
         public static bool themePanelOpened { get; set; }
         public static bool terminalOpened { get; set; }
         public static bool terminalStarted { get; set; }
+        public static bool findReplaceOpened { get; set; }
         public static List<string> openParanthesis { get; set; }
 
         // for themes
@@ -36,6 +37,9 @@ namespace Dex
         public static Font codeBoxFont { get; set; }
         public static Color baseBackColor { get; set; }
         public static Color baseForeColor { get; set; }
+
+        // find/replace details
+        public static bool searched { get; set; }
 
 
     }
