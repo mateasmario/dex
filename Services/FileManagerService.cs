@@ -115,6 +115,8 @@ namespace Dex.Services
 
             Globals.form.Text = "Dex Editor";
             CodeBox.Text = "";
+
+            System.Environment.CurrentDirectory = @"C:\";
         }
 
         public static void open(TreeView Filelist)
