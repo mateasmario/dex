@@ -10,7 +10,7 @@ namespace Dex.Services
 {
     internal class ThemeService
     {
-        public static void ChangeTheme(ListView Themelist, Label Themelabel, ConsoleControl.ConsoleControl terminal, TreeView Filelist)
+        public static void ChangeTheme(ListView Themelist, Label Themelabel, ConsoleControl.ConsoleControl terminal, TreeView Filelist, TextBox FindTextBox, TextBox ReplaceTextBox)
         {
             //ListView Themelist = (ListView)Globals.form.Controls["Themelist"];
             Panel Filepanel = (Panel)Globals.form.Controls["Filepanel"];
@@ -18,6 +18,9 @@ namespace Dex.Services
             MenuStrip menuStrip1 = (MenuStrip)Globals.form.Controls["menuStrip1"];
             StatusStrip statusStrip1 = (StatusStrip)Globals.form.Controls["statusStrip1"];
             Panel Themepanel = (Panel)Globals.form.Controls["Themepanel"];
+            Panel FindReplacePanel = (Panel)Globals.form.Controls["FindReplacePanel"];
+            //TextBox FindTextBox = (TextBox)Globals.form.Controls["FindTextBox"];
+            //TextBox ReplaceTextBox = (TextBox)Globals.form.Controls["ReplaceTextBox"];
             //Label Themelabel = (Label)Globals.form.Controls["Themelabel"];
             //ConsoleControl.ConsoleControl terminal = (ConsoleControl.ConsoleControl)Globals.form.Controls["Terminal"];
 
@@ -88,6 +91,12 @@ namespace Dex.Services
             CodeBox.ForeColor = Globals.codeBoxForeColor;
             CodeBox.Font = Globals.codeBoxFont;
             terminal.BackColor = Globals.terminalColor;
+            FindReplacePanel.BackColor = Globals.baseBackColor;
+            FindReplacePanel.ForeColor = Globals.baseForeColor;
+            FindTextBox.BackColor = Globals.codeBoxBackColor;
+            FindTextBox.ForeColor = Globals.baseForeColor;
+            ReplaceTextBox.BackColor = Globals.codeBoxBackColor;
+            ReplaceTextBox.ForeColor = Globals.baseForeColor;
         }
     }
 }

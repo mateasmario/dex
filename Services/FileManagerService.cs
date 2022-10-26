@@ -13,6 +13,7 @@ namespace Dex.Services
             Globals.form.Text = Globals.OpenedFile + " (Dex Editor)";
 
             UpdateFileInfo(Filelist);
+            System.Environment.CurrentDirectory = GetFileDirectory(Globals.OpenedFile);
         }
 
         public static void UpdateFileInfo(TreeView Filelist)
@@ -41,6 +42,20 @@ namespace Dex.Services
             Filelist.Nodes[7].Text = "Last Write: " + fi.LastWriteTime;
         }
 
+        public static string GetFileNameWithExtension(string fileName)
+        {
+            int lastSlash = -1;
+
+            for (int i = 0; i < fileName.Length; i++)
+            {
+                if (fileName[i] == '\\')
+                    lastSlash = i;
+            }
+
+            string result = fileName.Substring(lastSlash + 1);
+            return result;
+        }
+
         public static string GetFileNameNoExtension(string fileName)
         {
             int lastSlash = -1;
@@ -55,6 +70,18 @@ namespace Dex.Services
             }
 
             string result = fileName.Substring(lastSlash+1, lastDot-lastSlash-1);
+            return result;
+        }
+
+        public static string GetFileDirectory(string fileName)
+        {
+            int lastSlash = -1;
+
+            for (int i = 0; i < fileName.Length; i++)
+                if (fileName[i] == '\\')
+                    lastSlash = i;
+
+            string result = fileName.Substring(0, lastSlash+1);
             return result;
         }
 

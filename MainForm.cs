@@ -23,6 +23,8 @@ namespace Dex
 
             Globals.searched = false;
 
+            Globals.gitCommitMessage = "";
+
             Themepanel.Hide();
             Filepanel.Hide();
             Terminalpanel.Hide();
@@ -247,7 +249,7 @@ namespace Dex
         private void Themelist_DoubleClick(object sender, EventArgs e)
         {
             if (Themelist.SelectedItems.Count == 1)
-                ThemeService.ChangeTheme(Themelist, Themelabel, Globals.Terminal, Filelist);
+                ThemeService.ChangeTheme(Themelist, Themelabel, Globals.Terminal, Filelist, FindTextBox, ReplaceTextBox);
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -347,9 +349,19 @@ namespace Dex
 
         private void dToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Globals.findReplaceOpened = true;
-            FindReplacePanel.Show();
-            FindTextBox.Focus();
+            if (Globals.findReplaceOpened)
+            {
+                Globals.findReplaceOpened = false;
+                FindReplacePanel.Hide();
+                CodeBox.Focus();
+                Globals.searched = false;
+            }
+            else
+            {
+                Globals.findReplaceOpened = true;
+                FindReplacePanel.Show();
+                FindTextBox.Focus();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -362,20 +374,17 @@ namespace Dex
 
         public void FindInCodeBox()
         {
-            if (ReplaceTextBox.Text == "")
+            string data = FindTextBox.Text;
+            int location = CodeBox.Find(data, CodeBox.SelectionStart + CodeBox.SelectionLength, RichTextBoxFinds.None);
+
+            if (location >= 0)
             {
-                string data = FindTextBox.Text;
-                int location = CodeBox.Find(data, CodeBox.SelectionStart + CodeBox.SelectionLength, RichTextBoxFinds.None);
-
-                if (location >= 0)
-                {
-                    CodeBox.Focus();
-                    CodeBox.SelectionStart = location;
-                    CodeBox.SelectionLength = data.Length;
-                }
-
-                Globals.searched = true;
+                CodeBox.Focus();
+                CodeBox.SelectionStart = location;
+                CodeBox.SelectionLength = data.Length;
             }
+
+            Globals.searched = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -386,6 +395,66 @@ namespace Dex
         private void CodeBox_SelectionChanged(object sender, EventArgs e)
         {
             Globals.searched = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CodeBox.Text = CodeBox.Text.Replace(FindTextBox.Text, ReplaceTextBox.Text);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (Globals.OpenedFile != null)
+                TerminalService.OpenProcessInNewTerminal("git.exe", "init");
+            else MessageBox.Show("Open a file before executing Git commands through Dex.", "Dex Editor");
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            if (Globals.OpenedFile != null)
+                TerminalService.OpenProcessInNewTerminal("git.exe", "add " + FileManagerService.GetFileNameWithExtension(Globals.OpenedFile));
+            else MessageBox.Show("Open a file before executing Git commands through Dex.", "Dex Editor");
+        }
+
+        private void gitStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Globals.OpenedFile != null)
+                TerminalService.OpenProcessInNewTerminal("git.exe", "status");
+            else MessageBox.Show("Open a file before executing Git commands through Dex.", "Dex Editor");
+        }
+
+        private void gitAddAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Globals.OpenedFile != null)
+                TerminalService.OpenProcessInNewTerminal("git.exe", "add .");
+            else MessageBox.Show("Open a file before executing Git commands through Dex.", "Dex Editor");
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            if (Globals.OpenedFile != null)
+                TerminalService.OpenProcessInNewTerminal("git.exe", "push");
+            else MessageBox.Show("Open a file before executing Git commands through Dex.", "Dex Editor");
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            if (Globals.OpenedFile != null)
+            {
+                GitCommitForm gitCommitForm = new GitCommitForm();
+                gitCommitForm.StartPosition = FormStartPosition.CenterParent;
+                gitCommitForm.ShowDialog();
+
+                TerminalService.OpenProcessInNewTerminal("git.exe", "commit -m \"" + Globals.gitCommitMessage + "\"");
+            }
+            else MessageBox.Show("Open a file before executing Git commands through Dex.", "Dex Editor");
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            if (Globals.OpenedFile != null)
+                TerminalService.OpenProcessInNewTerminal("git.exe", "pull" + Globals.gitCommitMessage);
+            else MessageBox.Show("Open a file before executing Git commands through Dex.", "Dex Editor");
         }
     }
 

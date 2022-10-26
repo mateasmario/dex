@@ -41,6 +41,9 @@ namespace Dex
         // find/replace details
         public static bool searched { get; set; }
 
+        // other form details
+        public static string gitCommitMessage { get; set; }
+
 
     }
 }

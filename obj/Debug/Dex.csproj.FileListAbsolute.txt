@@ -15,3 +15,4 @@ E:\dev\winforms\Dex\obj\Debug\Dex.csproj.CoreCompileInputs.cache
 E:\dev\winforms\Dex\obj\Debug\Dex.csproj.CopyComplete
 E:\dev\winforms\Dex\obj\Debug\Dex.exe
 E:\dev\winforms\Dex\obj\Debug\Dex.pdb
+E:\dev\winforms\Dex\obj\Debug\Dex.GitCommitForm.resources
