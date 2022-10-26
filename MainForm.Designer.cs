@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("No file opened");
-            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem("Flat White");
-            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem("Flat White + Red");
-            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem("Deep Dark");
-            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem("Vim Blue");
-            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem("Vim Blue + Yellow");
-            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem("Crimson Red");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("No file opened");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Flat White");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Flat White + Red");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Deep Dark");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Vim Blue");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Vim Blue + Yellow");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Crimson Red");
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -145,7 +145,7 @@
             // 
             this.newFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newFileToolStripMenuItem.Image")));
             this.newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.newFileToolStripMenuItem.Text = "New";
             this.newFileToolStripMenuItem.Click += new System.EventHandler(this.newFileToolStripMenuItem_Click);
             // 
@@ -194,10 +194,10 @@
             this.Filelist.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Filelist.Location = new System.Drawing.Point(6, 45);
             this.Filelist.Name = "Filelist";
-            treeNode8.Name = "No file opened";
-            treeNode8.Text = "No file opened";
+            treeNode3.Name = "No file opened";
+            treeNode3.Text = "No file opened";
             this.Filelist.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8});
+            treeNode3});
             this.Filelist.ShowLines = false;
             this.Filelist.ShowRootLines = false;
             this.Filelist.Size = new System.Drawing.Size(200, 609);
@@ -213,7 +213,7 @@
             this.CodeBox.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CodeBox.Location = new System.Drawing.Point(200, 77);
             this.CodeBox.Name = "CodeBox";
-            this.CodeBox.Size = new System.Drawing.Size(822, 358);
+            this.CodeBox.Size = new System.Drawing.Size(822, 564);
             this.CodeBox.TabIndex = 2;
             this.CodeBox.Text = "";
             this.CodeBox.SelectionChanged += new System.EventHandler(this.CodeBox_SelectionChanged);
@@ -229,7 +229,7 @@
             this.Themepanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.Themepanel.Location = new System.Drawing.Point(1022, 32);
             this.Themepanel.Name = "Themepanel";
-            this.Themepanel.Size = new System.Drawing.Size(200, 639);
+            this.Themepanel.Size = new System.Drawing.Size(200, 609);
             this.Themepanel.TabIndex = 3;
             // 
             // pictureBox2
@@ -259,16 +259,16 @@
             this.Themelist.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.Themelist.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Themelist.HideSelection = false;
-            listViewItem43.StateImageIndex = 0;
-            listViewItem45.StateImageIndex = 0;
-            listViewItem46.StateImageIndex = 0;
+            listViewItem13.StateImageIndex = 0;
+            listViewItem15.StateImageIndex = 0;
+            listViewItem16.StateImageIndex = 0;
             this.Themelist.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem43,
-            listViewItem44,
-            listViewItem45,
-            listViewItem46,
-            listViewItem47,
-            listViewItem48});
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18});
             this.Themelist.Location = new System.Drawing.Point(6, 45);
             this.Themelist.Name = "Themelist";
             this.Themelist.Size = new System.Drawing.Size(188, 583);
@@ -286,9 +286,9 @@
             this.toolStripSplitButton3,
             this.toolStripSplitButton4,
             this.toolStripSplitButton1});
-            this.statusStrip1.Location = new System.Drawing.Point(200, 641);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 641);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(822, 30);
+            this.statusStrip1.Size = new System.Drawing.Size(1222, 30);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -353,7 +353,7 @@
             // 
             this.javaClassFileclassToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("javaClassFileclassToolStripMenuItem.Image")));
             this.javaClassFileclassToolStripMenuItem.Name = "javaClassFileclassToolStripMenuItem";
-            this.javaClassFileclassToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.javaClassFileclassToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.javaClassFileclassToolStripMenuItem.Text = "Java Class File";
             this.javaClassFileclassToolStripMenuItem.Click += new System.EventHandler(this.javaClassFileclassToolStripMenuItem_Click);
             // 
@@ -440,7 +440,7 @@
             // 
             this.powershellToolStripMenuItem.Image = global::Dex.Properties.Resources.powershell;
             this.powershellToolStripMenuItem.Name = "powershellToolStripMenuItem";
-            this.powershellToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.powershellToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.powershellToolStripMenuItem.Text = "Powershell";
             this.powershellToolStripMenuItem.Click += new System.EventHandler(this.TerminalButton_Click);
             // 
@@ -448,7 +448,7 @@
             // 
             this.cmdexeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cmdexeToolStripMenuItem.Image")));
             this.cmdexeToolStripMenuItem.Name = "cmdexeToolStripMenuItem";
-            this.cmdexeToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.cmdexeToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.cmdexeToolStripMenuItem.Text = "Command Prompt";
             this.cmdexeToolStripMenuItem.Click += new System.EventHandler(this.TerminalButton_Click);
             // 
@@ -457,7 +457,7 @@
             this.bashToolStripMenuItem.Enabled = false;
             this.bashToolStripMenuItem.Image = global::Dex.Properties.Resources.linux;
             this.bashToolStripMenuItem.Name = "bashToolStripMenuItem";
-            this.bashToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.bashToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.bashToolStripMenuItem.Text = "Bash";
             this.bashToolStripMenuItem.Click += new System.EventHandler(this.TerminalButton_Click);
             // 
@@ -478,7 +478,7 @@
             this.Filepanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.Filepanel.Location = new System.Drawing.Point(0, 32);
             this.Filepanel.Name = "Filepanel";
-            this.Filepanel.Size = new System.Drawing.Size(200, 639);
+            this.Filepanel.Size = new System.Drawing.Size(200, 609);
             this.Filepanel.TabIndex = 4;
             // 
             // pictureBox1
@@ -593,13 +593,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1222, 671);
+            this.Controls.Add(this.Terminalpanel);
             this.Controls.Add(this.CodeBox);
             this.Controls.Add(this.FindReplacePanel);
-            this.Controls.Add(this.Terminalpanel);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.Filepanel);
             this.Controls.Add(this.Themepanel);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
