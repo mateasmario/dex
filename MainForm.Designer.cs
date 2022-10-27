@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("No file opened");
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Flat White");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Flat White + Red");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Deep Dark");
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Vim Blue");
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Vim Blue + Yellow");
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Crimson Red");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("No file opened");
+            System.Windows.Forms.ListViewItem listViewItem97 = new System.Windows.Forms.ListViewItem("Flat White");
+            System.Windows.Forms.ListViewItem listViewItem98 = new System.Windows.Forms.ListViewItem("Flat White + Red");
+            System.Windows.Forms.ListViewItem listViewItem99 = new System.Windows.Forms.ListViewItem("Deep Dark");
+            System.Windows.Forms.ListViewItem listViewItem100 = new System.Windows.Forms.ListViewItem("Vim Blue");
+            System.Windows.Forms.ListViewItem listViewItem101 = new System.Windows.Forms.ListViewItem("Vim Blue + Yellow");
+            System.Windows.Forms.ListViewItem listViewItem102 = new System.Windows.Forms.ListViewItem("Crimson Red");
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,10 +194,10 @@
             this.Filelist.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Filelist.Location = new System.Drawing.Point(6, 45);
             this.Filelist.Name = "Filelist";
-            treeNode3.Name = "No file opened";
-            treeNode3.Text = "No file opened";
+            treeNode17.Name = "No file opened";
+            treeNode17.Text = "No file opened";
             this.Filelist.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode17});
             this.Filelist.ShowLines = false;
             this.Filelist.ShowRootLines = false;
             this.Filelist.Size = new System.Drawing.Size(200, 609);
@@ -227,9 +227,9 @@
             this.Themepanel.Controls.Add(this.Themelabel);
             this.Themepanel.Controls.Add(this.Themelist);
             this.Themepanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Themepanel.Location = new System.Drawing.Point(1022, 32);
+            this.Themepanel.Location = new System.Drawing.Point(1022, 77);
             this.Themepanel.Name = "Themepanel";
-            this.Themepanel.Size = new System.Drawing.Size(200, 609);
+            this.Themepanel.Size = new System.Drawing.Size(200, 564);
             this.Themepanel.TabIndex = 3;
             // 
             // pictureBox2
@@ -259,16 +259,16 @@
             this.Themelist.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.Themelist.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Themelist.HideSelection = false;
-            listViewItem13.StateImageIndex = 0;
-            listViewItem15.StateImageIndex = 0;
-            listViewItem16.StateImageIndex = 0;
+            listViewItem97.StateImageIndex = 0;
+            listViewItem99.StateImageIndex = 0;
+            listViewItem100.StateImageIndex = 0;
             this.Themelist.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18});
+            listViewItem97,
+            listViewItem98,
+            listViewItem99,
+            listViewItem100,
+            listViewItem101,
+            listViewItem102});
             this.Themelist.Location = new System.Drawing.Point(6, 45);
             this.Themelist.Name = "Themelist";
             this.Themelist.Size = new System.Drawing.Size(188, 583);
@@ -476,9 +476,9 @@
             this.Filepanel.Controls.Add(this.Filelist);
             this.Filepanel.Controls.Add(this.label1);
             this.Filepanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Filepanel.Location = new System.Drawing.Point(0, 32);
+            this.Filepanel.Location = new System.Drawing.Point(0, 77);
             this.Filepanel.Name = "Filepanel";
-            this.Filepanel.Size = new System.Drawing.Size(200, 609);
+            this.Filepanel.Size = new System.Drawing.Size(200, 564);
             this.Filepanel.TabIndex = 4;
             // 
             // pictureBox1
@@ -513,9 +513,9 @@
             this.FindReplacePanel.Controls.Add(this.FindTextBox);
             this.FindReplacePanel.Controls.Add(this.label2);
             this.FindReplacePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FindReplacePanel.Location = new System.Drawing.Point(200, 32);
+            this.FindReplacePanel.Location = new System.Drawing.Point(0, 32);
             this.FindReplacePanel.Name = "FindReplacePanel";
-            this.FindReplacePanel.Size = new System.Drawing.Size(822, 45);
+            this.FindReplacePanel.Size = new System.Drawing.Size(1222, 45);
             this.FindReplacePanel.TabIndex = 6;
             // 
             // button3
@@ -524,7 +524,7 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(710, 8);
+            this.button3.Location = new System.Drawing.Point(1110, 8);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(102, 27);
             this.button3.TabIndex = 12;
@@ -538,7 +538,7 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(638, 8);
+            this.button2.Location = new System.Drawing.Point(1038, 8);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(66, 27);
             this.button2.TabIndex = 11;
@@ -553,7 +553,7 @@
             this.ReplaceTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ReplaceTextBox.Location = new System.Drawing.Point(401, 12);
             this.ReplaceTextBox.Name = "ReplaceTextBox";
-            this.ReplaceTextBox.Size = new System.Drawing.Size(224, 20);
+            this.ReplaceTextBox.Size = new System.Drawing.Size(624, 20);
             this.ReplaceTextBox.TabIndex = 10;
             this.ReplaceTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Global_KeyDown);
             // 
@@ -595,11 +595,11 @@
             this.ClientSize = new System.Drawing.Size(1222, 671);
             this.Controls.Add(this.Terminalpanel);
             this.Controls.Add(this.CodeBox);
-            this.Controls.Add(this.FindReplacePanel);
-            this.Controls.Add(this.Filepanel);
             this.Controls.Add(this.Themepanel);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.Filepanel);
             this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.FindReplacePanel);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
