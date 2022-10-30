@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("No file opened");
-            System.Windows.Forms.ListViewItem listViewItem97 = new System.Windows.Forms.ListViewItem("Flat White");
-            System.Windows.Forms.ListViewItem listViewItem98 = new System.Windows.Forms.ListViewItem("Flat White + Red");
-            System.Windows.Forms.ListViewItem listViewItem99 = new System.Windows.Forms.ListViewItem("Deep Dark");
-            System.Windows.Forms.ListViewItem listViewItem100 = new System.Windows.Forms.ListViewItem("Vim Blue");
-            System.Windows.Forms.ListViewItem listViewItem101 = new System.Windows.Forms.ListViewItem("Vim Blue + Yellow");
-            System.Windows.Forms.ListViewItem listViewItem102 = new System.Windows.Forms.ListViewItem("Crimson Red");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("No file opened");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Flat White");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Flat White + Red");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Deep Dark");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Vim Blue");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Vim Blue + Yellow");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Crimson Red");
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,10 +194,10 @@
             this.Filelist.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Filelist.Location = new System.Drawing.Point(6, 45);
             this.Filelist.Name = "Filelist";
-            treeNode17.Name = "No file opened";
-            treeNode17.Text = "No file opened";
+            treeNode1.Name = "No file opened";
+            treeNode1.Text = "No file opened";
             this.Filelist.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode17});
+            treeNode1});
             this.Filelist.ShowLines = false;
             this.Filelist.ShowRootLines = false;
             this.Filelist.Size = new System.Drawing.Size(200, 609);
@@ -259,16 +259,16 @@
             this.Themelist.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.Themelist.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Themelist.HideSelection = false;
-            listViewItem97.StateImageIndex = 0;
-            listViewItem99.StateImageIndex = 0;
-            listViewItem100.StateImageIndex = 0;
+            listViewItem1.StateImageIndex = 0;
+            listViewItem3.StateImageIndex = 0;
+            listViewItem4.StateImageIndex = 0;
             this.Themelist.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem97,
-            listViewItem98,
-            listViewItem99,
-            listViewItem100,
-            listViewItem101,
-            listViewItem102});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6});
             this.Themelist.Location = new System.Drawing.Point(6, 45);
             this.Themelist.Name = "Themelist";
             this.Themelist.Size = new System.Drawing.Size(188, 583);
@@ -280,6 +280,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSplitButton2,

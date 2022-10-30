@@ -91,12 +91,12 @@ namespace Dex.Services
             CodeBox.ForeColor = Globals.codeBoxForeColor;
             CodeBox.Font = Globals.codeBoxFont;
             terminal.BackColor = Globals.terminalColor;
-            FindReplacePanel.BackColor = Globals.baseBackColor;
-            FindReplacePanel.ForeColor = Globals.baseForeColor;
-            FindTextBox.BackColor = Globals.codeBoxBackColor;
-            FindTextBox.ForeColor = Globals.baseForeColor;
-            ReplaceTextBox.BackColor = Globals.codeBoxBackColor;
-            ReplaceTextBox.ForeColor = Globals.baseForeColor;
+            // FindReplacePanel.BackColor = Globals.baseBackColor;
+            // FindReplacePanel.ForeColor = Globals.baseForeColor;
+            // FindTextBox.BackColor = Globals.codeBoxBackColor;
+            // FindTextBox.ForeColor = Globals.baseForeColor;
+            // ReplaceTextBox.BackColor = Globals.codeBoxBackColor;
+            // ReplaceTextBox.ForeColor = Globals.baseForeColor;
         }
     }
 }
